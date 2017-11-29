@@ -58,6 +58,7 @@ object Interpreter {
         case Loop(code) =>
           optimize(code) match {
             case Change(-1) :: Nil => Set(0, 0)
+            case Set(0, 0) :: Nil => Set(0, 0)
             case opt => Loop(opt)
           }
         case x => x
